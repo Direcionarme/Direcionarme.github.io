@@ -1,0 +1,84 @@
+# Code Citations
+
+## License: unknown
+https://github.com/ssoju/javascript/tree/1822ccccc361b22212c4dbf3e63eb6aaaa9ec0ab/src/ui/formValidator.js
+
+```
+emailRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9
+```
+
+
+## License: unknown
+https://github.com/philip993/coffee-shop/tree/bac54f75647e1ea28aac761beb927ad7f9e5d47c/src/Components/Login/Login.js
+
+```
+-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-
+```
+
+
+## License: unknown
+https://github.com/arthastheking113/BlogTest/tree/3786dc7720c049749125ca9abafc5a15ed5715fd/wwwroot/lib/jquery-validation/dist/jquery.validate.js
+
+```
+_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a
+```
+
+
+## License: MIT
+https://github.com/harrypackartist/github-slideshow/tree/007a96d5665f1e13a5000d1bc877e2c53833afed/node_modules/reveal.js/plugin/markdown/marked.js
+
+```
+Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-
+```
+
+## License: MIT
+https://github.com/khrystie/etec_ds/tree/5f48bb308461d11196e73799896ef62438a09cd7/Atividades/DS/php/pagamento/formPagamento.php
+
+```
+->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+```
+
+
+## License: unknown
+https://github.com/moeclay/pdw24jam_entry/tree/9606afcd7eba27990562194ec25565c642e33eab/application/views/dashboard/personal_point.php
+
+```
+"preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2
+```
+
+
+## License: unknown
+https://github.com/nicholas-tollner/WebDevAssignment2/tree/6bea377d641b15508287c7f57519e63afb81e5b5/contact.php
+
+```
+"https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:
+```
+
+
+## License: unknown
+https://github.com/monciego/scholarship-management-sytem/tree/5357c4a373fd2b5f07b807e2f0b6ab8113addb68/resources/views/layouts/guest.blade.php
+
+```
+>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700
+```
+
+
+## License: unknown
+https://github.com/ant513g/e2/tree/11f27bcec6a770ea0c1cb8219cd8176798f330ac/p2/results-view.php
+
+```
+preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel
+```
+
