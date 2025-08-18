@@ -1,2 +1,3 @@
 # Questionário linkert simples
-https://ianxkuraoka.github.io/
+
+https://www.direcionar.me/
