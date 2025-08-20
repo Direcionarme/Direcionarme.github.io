@@ -739,6 +739,9 @@ async function submitResults() {
             session_info: sessionInfo
         });
 
+        const estado = document.getElementById('estado')?.value || '';
+        const cidade = document.getElementById('cidade')?.value || '';
+
         await emailjs.send('service_f61mg7v', 'template_hv83ral', {
             to_email: 'direcionar.me@gmail.com',
             user_name: sanitizeHtml(name),
@@ -747,7 +750,9 @@ async function submitResults() {
             subpillar_html: subPillarHtml,
             user_email: sanitizedEmail,
             session_info: sessionInfo,
-            client_ip: clientIP
+            client_ip: clientIP,
+            estado: sanitizeHtml(estado),
+            cidade: sanitizeHtml(cidade)
         });
 
         clearSession();
@@ -815,3 +820,51 @@ function getTextBasedChart(metrics) {
     `;
     return chart;
 }
+
+
+// IBGE Estado/Cidade loading for Email screen
+function setupIBGEStateCitySelectors() {
+    const estadoSelect = document.getElementById("estado");
+    const cidadeSelect = document.getElementById("cidade");
+
+    if (!estadoSelect || !cidadeSelect) return;
+
+    async function carregarEstados() {
+        const resp = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados");
+        const estados = await resp.json();
+        estados.sort((a, b) => a.nome.localeCompare(b.nome));
+        estados.forEach(estado => {
+            const option = document.createElement("option");
+            option.value = estado.sigla;
+            option.textContent = `${estado.sigla} - ${estado.nome}`;
+            estadoSelect.appendChild(option);
+        });
+    }
+
+    async function carregarCidades(uf) {
+        cidadeSelect.innerHTML = '<option value="">Carregando...</option>';
+        const resp = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`);
+        const cidades = await resp.json();
+        cidadeSelect.innerHTML = '<option value="">Selecione a cidade</option>';
+        cidades.forEach(cidade => {
+            const option = document.createElement("option");
+            option.value = cidade.nome;
+            option.textContent = cidade.nome;
+            cidadeSelect.appendChild(option);
+        });
+    }
+
+    estadoSelect.addEventListener("change", () => {
+        const uf = estadoSelect.value;
+        if (uf) carregarCidades(uf);
+    });
+
+    carregarEstados();
+}
+
+// Call this when the email screen is shown
+document.addEventListener('DOMContentLoaded', function() {
+    setupIBGEStateCitySelectors();
+});
+
+
