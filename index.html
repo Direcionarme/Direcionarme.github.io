@@ -129,46 +129,11 @@
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
     <script>
       (function(){
-        emailjs.init("29KZmTnmmubf4xWWC"); // Replace with your EmailJS public key
+        emailjs.init("29KZmTnmmubf4xWWC"); //EmailJS public key
       })();
-    </script>
-    <script>
-      const estadoSelect = document.getElementById("estado");
-      const cidadeSelect = document.getElementById("cidade");
-    
-      async function carregarEstados() {
-        const resp = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados");
-        const estados = await resp.json();
-        estados.sort((a, b) => a.nome.localeCompare(b.nome));
-        estados.forEach(estado => {
-          const option = document.createElement("option");
-          option.value = estado.sigla;
-          option.textContent = `${estado.sigla} - ${estado.nome}`;
-          estadoSelect.appendChild(option);
-        });
-      }
-    
-      async function carregarCidades(uf) {
-        cidadeSelect.innerHTML = '<option value="">Carregando...</option>';
-        const resp = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`);
-        const cidades = await resp.json();
-        cidadeSelect.innerHTML = '<option value="">Selecione a cidade</option>';
-        cidades.forEach(cidade => {
-          const option = document.createElement("option");
-          option.value = cidade.nome;
-          option.textContent = cidade.nome;
-          cidadeSelect.appendChild(option);
-        });
-      }
-    
-      estadoSelect.addEventListener("change", () => {
-        const uf = estadoSelect.value;
-        if (uf) carregarCidades(uf);
-      });
-    
-      carregarEstados();
     </script>
 </body>
 </html>
+
 
 
