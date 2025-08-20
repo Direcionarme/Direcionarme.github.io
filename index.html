@@ -90,17 +90,22 @@
             <h2>PARABÉNS PELO SEU INTERESSE EM SE CONHECER MELHOR!</h2>
             <p class="subtitle">Preencha com seu email para receber os resultados</p>
 
-            <!-- Estado -->
-            <label for="estado" style="font-weight:bold;display:block;margin-top:10px;">Estado (UF):</label>
-            <select id="estado" name="estado" required style="padding:6px;margin-top:5px;width:250px;">
-            <option value="">Selecione o estado</option>
-            </select>
+            <!-- Estado e Cidade -->
+            <div style="display: flex; gap: 16px; margin-bottom: 20px;">
+              <div style="flex: 1;">
+                <label for="estado" style="font-weight:bold;display:block;margin-bottom:6px;">Estado (UF):</label>
+                <select id="estado" name="estado" required class="input-slot">
+                  <option value="">Selecione o estado</option>
+                </select>
+              </div>
+              <div style="flex: 2;">
+                <label for="cidade" style="font-weight:bold;display:block;margin-bottom:6px;">Cidade:</label>
+                <select id="cidade" name="cidade" required class="input-slot">
+                  <option value="">Selecione a cidade</option>
+                </select>
+              </div>
+            </div>
             
-            <!-- Cidade -->
-            <label for="cidade" style="font-weight:bold;display:block;margin-top:10px;">Cidade:</label>
-            <select id="cidade" name="cidade" required style="padding:6px;margin-top:5px;width:250px;">
-            <option value="">Selecione a cidade</option>
-            </select>
             <!-- Nome -->
             <input type="text" class="name-input" placeholder="escreva seu nome!" id="nameInput" name="nameInput" maxlength="80" required autocomplete="name" />
 
@@ -134,6 +139,7 @@
     </script>
 </body>
 </html>
+
 
 
 
