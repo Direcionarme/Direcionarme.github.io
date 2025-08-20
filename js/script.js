@@ -705,6 +705,20 @@ async function submitResults() {
         if (submitBtn) submitBtn.disabled = false;
         return;
     }
+    const estado = document.getElementById('estado')?.value || '';
+    const cidade = document.getElementById('cidade')?.value || '';
+    if (!estado) {
+        emailError.textContent = 'Por favor, selecione o estado.';
+        emailError.style.display = 'block';
+        if (submitBtn) submitBtn.disabled = false;
+        return;
+    }
+    if (!cidade) {
+        emailError.textContent = 'Por favor, selecione a cidade.';
+        emailError.style.display = 'block';
+        if (submitBtn) submitBtn.disabled = false;
+        return;
+    }
     const clientIP = await getClientIP();
     if (!rateLimiter.isAllowed(clientIP)) {
         const remainingTime = Math.ceil(rateLimiter.getRemainingTime(clientIP) / 60000);
@@ -866,5 +880,6 @@ function setupIBGEStateCitySelectors() {
 document.addEventListener('DOMContentLoaded', function() {
     setupIBGEStateCitySelectors();
 });
+
 
 
