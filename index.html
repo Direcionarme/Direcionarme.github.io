@@ -89,7 +89,22 @@
             <img src="images/cerebro.png" alt="Logo" class="cerebro-image">
             <h2>PARABÉNS PELO SEU INTERESSE EM SE CONHECER MELHOR!</h2>
             <p class="subtitle">Preencha com seu email para receber os resultados</p>
+
+            <!-- Estado -->
+            <label for="estado" style="font-weight:bold;display:block;margin-top:10px;">Estado (UF):</label>
+            <select id="estado" name="estado" required style="padding:6px;margin-top:5px;width:250px;">
+            <option value="">Selecione o estado</option>
+            </select>
+            
+            <!-- Cidade -->
+            <label for="cidade" style="font-weight:bold;display:block;margin-top:10px;">Cidade:</label>
+            <select id="cidade" name="cidade" required style="padding:6px;margin-top:5px;width:250px;">
+            <option value="">Selecione a cidade</option>
+            </select>
+            <!-- Nome -->
             <input type="text" class="name-input" placeholder="escreva seu nome!" id="nameInput" name="nameInput" maxlength="80" required autocomplete="name" />
+
+            <!-- Email -->
             <input type="email" class="email-input" placeholder="seunome@gmail.com" id="emailInput">
             <div class="error-message" id="emailError">Por favor, insira um email válido</div>
             <button class="btn" id="submitBtn" onclick="submitResults()">RECEBER RESULTADOS</button>
@@ -117,7 +132,43 @@
         emailjs.init("29KZmTnmmubf4xWWC"); // Replace with your EmailJS public key
       })();
     </script>
+    <script>
+      const estadoSelect = document.getElementById("estado");
+      const cidadeSelect = document.getElementById("cidade");
+    
+      async function carregarEstados() {
+        const resp = await fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados");
+        const estados = await resp.json();
+        estados.sort((a, b) => a.nome.localeCompare(b.nome));
+        estados.forEach(estado => {
+          const option = document.createElement("option");
+          option.value = estado.sigla;
+          option.textContent = `${estado.sigla} - ${estado.nome}`;
+          estadoSelect.appendChild(option);
+        });
+      }
+    
+      async function carregarCidades(uf) {
+        cidadeSelect.innerHTML = '<option value="">Carregando...</option>';
+        const resp = await fetch(`https://servicodados.ibge.gov.br/api/v1/localidades/estados/${uf}/municipios`);
+        const cidades = await resp.json();
+        cidadeSelect.innerHTML = '<option value="">Selecione a cidade</option>';
+        cidades.forEach(cidade => {
+          const option = document.createElement("option");
+          option.value = cidade.nome;
+          option.textContent = cidade.nome;
+          cidadeSelect.appendChild(option);
+        });
+      }
+    
+      estadoSelect.addEventListener("change", () => {
+        const uf = estadoSelect.value;
+        if (uf) carregarCidades(uf);
+      });
+    
+      carregarEstados();
+    </script>
 </body>
-
 </html>
+
 
